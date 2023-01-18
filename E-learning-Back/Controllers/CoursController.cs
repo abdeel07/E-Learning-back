@@ -26,6 +26,13 @@ namespace E_learning_Back.Controllers
         {
             return await _context.Cours.ToListAsync();
         }
+
+        [HttpGet("category/{id}")]
+        public async Task<ActionResult<IEnumerable<Cour>>> GetCoursCat(int id)
+        {
+            return await _context.Cours.Where(c => c.CategoryId == id).ToListAsync();
+        }
+
         [HttpGet("courBytitle/{title}")]
         public async Task<ActionResult<Cour>> GetCourBytitle(string title)
         {
